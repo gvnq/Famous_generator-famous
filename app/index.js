@@ -103,7 +103,7 @@ var FamousGenerator = yeoman.generators.Base.extend({
       mixpanel.track('yo famous', {
         projectName: this.projectName,
         projectDescription: this.projectDesc,
-        authorLogin: this.authorLogin,
+        githubLogin: this.authorLogin,
         authorName: this.authorName,
         authorEmail: this.authorEmail
       });
