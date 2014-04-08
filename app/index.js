@@ -43,7 +43,8 @@ var FamousGenerator = yeoman.generators.Base.extend({
         name: this.user.git.username || process.env.user || process.env.username,
 /*        login: 'famous',*/
         email: this.user.git.email
-      }
+      },
+      noTinfoil: true
     });
   },
 
@@ -91,6 +92,15 @@ var FamousGenerator = yeoman.generators.Base.extend({
         default : this.config.get('author').login || this.config.get('authorLogin')
       });
     }
+    
+    if (!this.config.get('noTinfoil') || force) {
+      questions.push({
+        type : 'confirm',
+        name : 'noTinfoil',
+        message : 'Is it alright for us to track some information to make the famous experience better?',
+        default : this.config.get('noTinfoil') || true
+      });
+    }
 
     this.prompt(questions, function (answers) {
       this.projectName = answers.projectName || this.config.get('projectName');
@@ -99,14 +109,17 @@ var FamousGenerator = yeoman.generators.Base.extend({
       
       this.authorName  = this.config.get('author').name;
       this.authorEmail = this.config.get('author').email;
+      this.noTinfoil = this.config.get('noTinfoil');
 
-      mixpanel.track('yo famous', {
-        projectName: this.projectName,
-        projectDescription: this.projectDesc,
-        githubLogin: this.authorLogin,
-        authorName: this.authorName,
-        authorEmail: this.authorEmail
-      });
+      if (this.noTinfoil) {
+        mixpanel.track('yo famous', {
+          projectName: this.projectName,
+          projectDescription: this.projectDesc,
+          githubLogin: this.authorLogin,
+          authorName: this.authorName,
+          authorEmail: this.authorEmail
+        });
+      }
 
       //save config to .yo-rc.json
       this.config.set(answers);
