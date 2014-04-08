@@ -8,6 +8,7 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var mixpanel = require('mixpanel').init('9c7f636ecd96c3092b3cbe6147a56cd8');
 
 
 var FamousGenerator = yeoman.generators.Base.extend({
@@ -98,6 +99,14 @@ var FamousGenerator = yeoman.generators.Base.extend({
       
       this.authorName  = this.config.get('author').name;
       this.authorEmail = this.config.get('author').email;
+
+      mixpanel.track('yo famous', {
+        projectName: this.projectName,
+        projectDescription: this.projectDesc,
+        authorLogin: this.authorLogin,
+        authorName: this.authorName,
+        authorEmail: this.authorEmail
+      });
 
       //save config to .yo-rc.json
       this.config.set(answers);

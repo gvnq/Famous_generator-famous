@@ -29,7 +29,8 @@
   "dependencies": {
     "yeoman-generator": "~0.16.0",
     "chalk": "~0.4.0",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "mixpanel": "0.0.19"
   },
   "devDependencies": {
     "mocha": "*"
