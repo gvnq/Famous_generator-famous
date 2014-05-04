@@ -5,7 +5,7 @@ var helpers = require('yeoman-generator').test;
 
 describe('famous generator', function () {
   beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
+    helpers.testDirectory(path.join(__dirname, 'temp-not-empty'), function (err) {
       if (err) {
         return done(err);
       }
@@ -13,7 +13,8 @@ describe('famous generator', function () {
       this.app = helpers.createGenerator('famous:app', [
         '../../app'
       ]);
-      done();
+      
+      helpers.gruntfile({}, done);
     }.bind(this));
   });
 
@@ -51,7 +52,7 @@ describe('famous generator', function () {
     ];
 
     helpers.mockPrompt(this.app, {
-      'someOption': true
+      'projectName': 'Test Project'
     });
     this.app.options['skip-install'] = true;
     this.app.run({}, function () {

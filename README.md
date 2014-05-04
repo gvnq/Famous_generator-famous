@@ -1,4 +1,4 @@
-# generator-[famous](http://famo.us)
+# generator-[famous](http://famo.us) [![Build Status](https://travis-ci.org/Famous/generator-famous.svg)](https://travis-ci.org/Famous/generator-famous) [![Dependency Status](https://david-dm.org/Famous/generator-famous.svg)](https://david-dm.org/Famous/generator-famous)
 
 > Use this [yeoman](http://yeoman.io) generator to seed your next Famo.us project... automation ftw!
 
@@ -16,7 +16,7 @@ Basically, he wears a top hat, lives in your computer, and waits for you to tell
 Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
 
 ```
-$ npm install -g yo
+$ npm install -g yo grunt-cli bower
 ```
 
 ### How to Install
@@ -30,8 +30,8 @@ $ npm install -g generator-famous
 Make a directory to put your app into and hop in
 
 ```
-$ mkdir moobyApp   # mkdir makes a new directory
-$ cd moobyApp      # cd is short for change directory
+$ mkdir famousApp   # mkdir makes a new directory
+$ cd famousApp      # cd is short for change directory
 $ yo famous        # Let's call the yeoman to make us famous
 ```
 
